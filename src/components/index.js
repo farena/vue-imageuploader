@@ -4,9 +4,7 @@ import ImgUploader from "./ImgUploader.vue";
 const Components = {
     ImgUploader
 };
+Vue.component('vue-imageuploader', ImgUploader);
 
-Object.keys(Components).forEach(name => {
-    Vue.component(name, Components[name]);
-});
 
 export default Components;
