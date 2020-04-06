@@ -26,12 +26,12 @@ Inside any component in the project
 
 <template>
   <div>
-    <imgUploader
+    <img-uploader
         @error="displayError"
         @input="onUploadImage"
     >
       <button>Upload Photo</button>
-    </imgUploader>
+    </img-uploader>
   </div>
 </template>
 
@@ -61,11 +61,11 @@ You can add the imageURL base64 encoded response to a IMG tag.
         width="200"
         v-if="imgPreview"
     >
-    <imgUploader
+    <img-uploader
         @input="onUploadImage"
     >
       <button>Upload Photo</button>
-    </imgUploader>
+    </img-uploader>
   </div>
 </template>
 
@@ -88,19 +88,19 @@ export default {
 
 ## Custom MaxSize
 ```
-<imgUploader
+<img-uploader
     @error="displayError"
     @input="onUploadImage"
     :max-size="1024" // MaxSize in KB's
 >
   <button>Upload Photo</button>
-</imgUploader>
+</img-uploader>
 ```
 
 ## Custom Error Messages
 In the "too-big-error-msg" you can bind the maxSize set up before with {maxSize}. This time is displayed in MB's. 
 ```
-<imgUploader
+<img-uploader
     @error="displayError"
     @input="onUploadImage"
     :max-size="1024" // MaxSize in KB's
@@ -108,5 +108,5 @@ In the "too-big-error-msg" you can bind the maxSize set up before with {maxSize}
     too-big-error-msg="Image is too big, it cannot be more than {maxSize} MB"
 >
   <button>Upload Photo</button>
-</imgUploader>
+</img-uploader>
 ```
