@@ -1,27 +1,42 @@
 <template>
   <div id="app">
-    <imgUploader><button>asdf</button></imgUploader>
+    <img
+        :src="imgPreview"
+        width="200"
+        v-if="imgPreview"
+    >
+    <imgUploader
+        @error="displayError"
+        @input="onUploadImage"
+        :max-size="1024"
+        not-image-error-msg="Error no image"
+        too-big-error-msg="error too big"
+    >
+      <button>Upload Photo</button>
+    </imgUploader>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import imgUploader from './components/ImgUploader.vue';
 
 export default {
-  name: 'app',
+  data() {
+    return {
+      imgPreview: null,
+    };
+  },
   components: {
-    HelloWorld
-  }
+    imgUploader,
+  },
+  methods: {
+    displayError(error) {
+      alert(error);
+    },
+    onUploadImage({ imageFile, imageURL }) {
+      console.log(imageFile, imageURL);
+      this.imgPreview = imageURL;
+    },
+  },
 }
 </script>
-
-<style lang="scss">
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
